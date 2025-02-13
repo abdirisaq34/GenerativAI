@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Plan and Task Tracker</title>
+    <style>
+        /* CSS-stilene for å gjøre designet pent */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #4CAF50;
+            font-size: 2.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .category-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .task-input {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .task-input input {
+            padding: 10px;
+            width: 75%;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .task-input button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .task-input button:hover {
+            background-color: #45a049;
+        }
+
+        .task-list {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+
+        .task-list li {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .timer-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .timer-container select {
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        .study-tips {
+            margin-top: 30px;
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .study-tips h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .study-tips p {
+            font-size: 1.2rem;
+        }
+
+        .task-status-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        .task-status-table th, .task-status-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .task-status-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .start-button {
+            padding: 10px 20px;
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .start-button:hover {
+            background-color: #e68900;
+        }
+
+        .done-button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .done-button:hover {
+            background-color: #218838;
+        }
+
+        .congratulations-message {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #4CAF50;
+            display: none;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .popup button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="intro-text">
+        <p>Velkommen til Study Plan og Task Tracker! Dette verktøyet hjelper deg med å organisere studiene dine og holde styr på oppgavene dine. Når en oppgave er fullført, vil du automatisk få en nedtelling for pausen. Kom i gang ved å legge til en oppgave nedenfor!</p>
+    </div>
+
+    <h1>Study Plan and Task Tracker</h1>
+
+    <div class="section-title">Choose Subject</div>
+    <select id="subjectSelect">
+        <option value="Utvkling av intraktive nettsider">Utvkling av intraktive nettsider</option>
+        <option value="Genrativ AI">Genrativ AI</option>
+    </select>
+
+    <div class="section-title">Add a Task</div>
+    <div class="task-input">
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <button onclick="addTaskToList()">Add Task</button>
+    </div>
+
+    <div class="section-title">Set Timer for Task</div>
+    <div class="timer-container">
+        <div>
+            <label for="taskTimeSelect">Task Duration (minutes):</label>
+            <select id="taskTimeSelect">
+                <script>
+                    const taskTimeSelect = document.getElementById("taskTimeSelect");
+                    for (let i = 1; i <= 60; i++) {
+                        const option = document.createElement("option");
+                        option.value = i;
+                        option.textContent = `${i} minute${i > 1 ? 's' : ''}`;
+                        taskTimeSelect.appendChild(option);
+                    }
+                </script>
+            </select>
+        </div>
+
+        <div>
+            <label for="pauseTimeSelect">Pause Duration (minutes):</label>
+            <select id="pauseTimeSelect">
+                <option value="5">5 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="15">15 minutes</option>
+            </select>
+        </div>
+    </div>
+
+    <ul class="task-list" id="taskList"></ul>
+
+    <div class="section-title">Study Tips for ADHD</div>
+    <div class="study-tips">
+        <h3>Study Tips:</h3>
+        <p>1. Break down tasks into smaller, manageable steps.</p>
+        <p>2. Use a timer (like Pomodoro) to stay focused in intervals.</p>
+        <p>3. Take regular breaks to refresh your mind.</p>
+        <p>4. Minimize distractions by creating a quiet and organized study environment.</p>
+        <p>5. Use tools like reminders and checklists to stay on track.</p>
+    </div>
+
+    <div class="section-title">Task Status</div>
+    <table class="task-status-table">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Status</th>
+                <th>Time Remaining</th>
+                <th>Start Timer</th>
+                <th>Mark as Done</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="taskStatusTableBody">
+        </tbody>
+    </table>
+
+    <div id="congratulationsMessage" class="congratulations-message">
+        Gratulerer med fullført oppgave! Ta en velfortjent pause.
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Bra jobbet, ta en velfortjent pause!</h2>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+</div>
+
+<audio id="ringTone" src="arash-broken-angel-ringtone-sad-ringtone-720p-00-61932-63588.mp3" preload="auto"></audio>
+
+<script>
+    let tasks = [];
+
+    function addTaskToList() {
+        let taskInput = document.getElementById('taskInput');
+        let taskName = taskInput.value.trim();
+        let taskTime = parseInt(document.getElementById('taskTimeSelect').value);
+
+        if (taskName !== '') {
+            let task = {
+                taskName: taskName,
+                status: "Not Started",
+                timeRemaining: taskTime * 60,
+                timer: null,
+                pauseTime: parseInt(document.getElementById('pauseTimeSelect').value) * 60,
+                isOnBreak: false
+            };
+
+            tasks.push(task);
+            updateTaskList();
+            updateTaskStatusTable();
+            taskInput.value = ''; 
+        }
+    }
+
+    function updateTaskList() {
+        let taskList = document.getElementById('taskList');
+        taskList.innerHTML = '';
+
+        tasks.forEach((task, index) => {
+            let li = document.createElement('li');
+            li.textContent = `${task.taskName} - ${task.status}`;
+            taskList.appendChild(li);
+        });
+    }
+
+    function updateTaskStatusTable() {
+        let taskStatusTableBody = document.getElementById('taskStatusTableBody');
+        taskStatusTableBody.innerHTML = '';
+
+        tasks.forEach((task, index) => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${task.taskName}</td>
+                <td>${task.status}</td>
+                <td>${formatTime(task.timeRemaining)}</td>
+                <td><button onclick="startTimer(${index})">Start</button></td>
+                <td><button onclick="markTaskAsDone(${index})">Done</button></td>
+                <td><button onclick="removeTask(${index})">Remove</button></td>
+            `;
+            taskStatusTableBody.appendChild(row);
+        });
+    }
+
+    function startTimer(taskIndex) {
+        let task = tasks[taskIndex];
+        if (task.timer) clearInterval(task.timer);
+
+        task.timer = setInterval(() => {
+            if (task.isOnBreak) {
+                if (task.timeRemaining > 0) {
+                    task.timeRemaining--;
+                } else {
+                    clearInterval(task.timer);
+                    task.isOnBreak = false;
+                    alert("It's time for a break!");
+                }
+            } else {
+                if (task.timeRemaining > 0) {
+                    task.timeRemaining--;
+                } else {
+                    task.status = "Complete";
+                    clearInterval(task.timer);
+                    updateTaskList();
+                    setTimeout(showPopup, 1000); // Show the popup after a second
+                }
+            }
+            updateTaskStatusTable();
+        }, 1000);
+    }
+
+    function markTaskAsDone(taskIndex) {
+        tasks[taskIndex].status = 'Complete';
+        updateTaskList();
+        setTimeout(showPopup, 1000); // Show the popup after marking task as done
+    }
+
+    function removeTask(taskIndex) {
+        tasks.splice(taskIndex, 1);
+        updateTaskList();
+        updateTaskStatusTable();
+    }
+
+    function showPopup() {
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    function formatTime(seconds) {
+        let minutes = Math.floor(seconds / 60);
+        let remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    }
+</script>
+
+</body>
+</html>
