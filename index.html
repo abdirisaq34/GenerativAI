@@ -1,433 +1,575 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Plan and Task Tracker</title>
-    <style>
-        /* CSS-stilene for å gjøre designet pent */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #4CAF50;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .intro-text {
-            background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            color: #4CAF50;
-            font-size: 2.5rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .category-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        select {
-            padding: 10px;
-            font-size: 1rem;
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-        }
-
-        .task-input {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .task-input input {
-            padding: 10px;
-            width: 75%;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        .task-input button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .task-input button:hover {
-            background-color: #45a049;
-        }
-
-        .task-list {
-            list-style-type: none;
-            margin-top: 20px;
-        }
-
-        .task-list li {
-            background-color: #e8f5e9;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
-
-        .timer-container {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .timer-container select {
-            width: 150px;
-            margin-right: 10px;
-        }
-
-        .study-tips {
-            margin-top: 30px;
-            background-color: #e8f5e9;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .study-tips h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .study-tips p {
-            font-size: 1.2rem;
-        }
-
-        .task-status-table {
-            width: 100%;
-            margin-top: 30px;
-            border-collapse: collapse;
-        }
-
-        .task-status-table th, .task-status-table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        .task-status-table th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .start-button {
-            padding: 10px 20px;
-            background-color: #FFA500;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .start-button:hover {
-            background-color: #e68900;
-        }
-
-        .done-button {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .done-button:hover {
-            background-color: #218838;
-        }
-
-        .congratulations-message {
-            background-color: #e8f5e9;
-            padding: 15px;
-            margin-top: 30px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.5rem;
-            color: #4CAF50;
-            display: none;
-        }
-
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup-content {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .popup button {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .popup button:hover {
-            background-color: #218838;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tidslinje for Norsk Historie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    /* Søkefelt stil */
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .search-container input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .timeline {
+      padding: 20px;
+    }
+    .period {
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+    .period h2 {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-left: 5px solid #4CAF50;
+    }
+    /* Container med flexbox for hendelsene */
+    .event-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .event-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      max-width: 250px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .event-card:hover {
+      transform: scale(1.02);
+    }
+    .event-card img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 500px;
+      width: 90%;
+    }
+    .close-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="intro-text">
-        <p>Velkommen til Study Plan og Task Tracker! Dette verktøyet hjelper deg med å organisere studiene dine og holde styr på oppgavene dine. Når en oppgave er fullført, vil du automatisk få en nedtelling for pausen. Kom i gang ved å legge til en oppgave nedenfor!</p>
-    </div>
-
-    <h1>Study Plan and Task Tracker</h1>
-
-    <div class="section-title">Choose Subject</div>
-    <select id="subjectSelect">
-        <option value="Utvkling av intraktive nettsider">Utvkling av intraktive nettsider</option>
-        <option value="Genrativ AI">Genrativ AI</option>
-    </select>
-
-    <div class="section-title">Add a Task</div>
-    <div class="task-input">
-        <input type="text" id="taskInput" placeholder="Enter a new task">
-        <button onclick="addTaskToList()">Add Task</button>
-    </div>
-
-    <div class="section-title">Set Timer for Task</div>
-    <div class="timer-container">
-        <div>
-            <label for="taskTimeSelect">Task Duration (minutes):</label>
-            <select id="taskTimeSelect">
-                <script>
-                    const taskTimeSelect = document.getElementById("taskTimeSelect");
-                    for (let i = 1; i <= 60; i++) {
-                        const option = document.createElement("option");
-                        option.value = i;
-                        option.textContent = `${i} minute${i > 1 ? 's' : ''}`;
-                        taskTimeSelect.appendChild(option);
-                    }
-                </script>
-            </select>
+  <header>
+    <h1>Tidslinje for Viktige Hendelser i Norsk Historie</h1>
+    <p>Utforsk viktige hendelser i Norges historie gjennom denne interaktive tidslinjen.</p>
+  </header>
+  
+  <!-- Søkefelt -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Søk etter hendelser..." oninput="filterEvents()">
+  </div>
+  
+  <div class="timeline">
+    <!-- 1300-1399 -->
+    <section class="period">
+      <h2>1300-1399</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event1')">
+          <h3>Svartedauden (1349)</h3>
+          <p>Den ødeleggende pestepidemien reduserte befolkningen drastisk.</p>
         </div>
-
-        <div>
-            <label for="pauseTimeSelect">Pause Duration (minutes):</label>
-            <select id="pauseTimeSelect">
-                <option value="5">5 minutes</option>
-                <option value="10">10 minutes</option>
-                <option value="15">15 minutes</option>
-            </select>
+        <div class="event-card" onclick="openModal('event2')">
+          <h3>Endringer i den politiske maktbalansen</h3>
+          <p>Pestens følgevirkninger svekket adel og kirke.</p>
         </div>
-    </div>
-
-    <ul class="task-list" id="taskList"></ul>
-
-    <div class="section-title">Study Tips for ADHD</div>
-    <div class="study-tips">
-        <h3>Study Tips:</h3>
-        <p>1. Break down tasks into smaller, manageable steps.</p>
-        <p>2. Use a timer (like Pomodoro) to stay focused in intervals.</p>
-        <p>3. Take regular breaks to refresh your mind.</p>
-        <p>4. Minimize distractions by creating a quiet and organized study environment.</p>
-        <p>5. Use tools like reminders and checklists to stay on track.</p>
-    </div>
-
-    <div class="section-title">Task Status</div>
-    <table class="task-status-table">
-        <thead>
-            <tr>
-                <th>Task</th>
-                <th>Status</th>
-                <th>Time Remaining</th>
-                <th>Start Timer</th>
-                <th>Mark as Done</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-        <tbody id="taskStatusTableBody">
-        </tbody>
-    </table>
-
-    <div id="congratulationsMessage" class="congratulations-message">
-        Gratulerer med fullført oppgave! Ta en velfortjent pause.
-    </div>
-
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <h2>Bra jobbet, ta en velfortjent pause!</h2>
-            <button onclick="closePopup()">OK</button>
+        <div class="event-card" onclick="openModal('event3')">
+          <h3>Kristendommens etablering og kirkebygging</h3>
+          <p>Kirkelig struktur ble konsolidert og mange katedraler bygget.</p>
         </div>
+        <div class="event-card" onclick="openModal('event4')">
+          <h3>Handel og kulturkontakt</h3>
+          <p>Handel med Europa fortsatte til tross for befolkningsnedgang.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event5')">
+          <h3>Begynnelsen av dansk innflytelse</h3>
+          <p>Danske adelige og embetsmenn fikk økt innflytelse over Norge.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1400-1499 -->
+    <section class="period">
+      <h2>1400-1499</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event6')">
+          <h3>Kalmarunionens etablering (1397)</h3>
+          <p>Norge ble med i Kalmarunionen med Danmark og Sverige.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event7')">
+          <h3>Konsolidering av unionen</h3>
+          <p>Norske institusjoner ble integrert i unionens system.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event8')">
+          <h3>Handelsvekst i Bergen</h3>
+          <p>Bergen vokste frem som et viktig handelsknutepunkt.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event9')">
+          <h3>Utvikling av norsk lov og administrasjon</h3>
+          <p>Rettssystemet ble tilpasset unionens behov.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event10')">
+          <h3>Kulturell påvirkning fra Europa</h3>
+          <p>Renessanseideer begynte å sive inn.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1500-1599 -->
+    <section class="period">
+      <h2>1500-1599</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event11')">
+          <h3>Reformasjonen i Norge (1537)</h3>
+          <p>Overgang til protestantisme forandret kirkestrukturen.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event12')">
+          <h3>Reduksjon av kirkens eiendommer</h3>
+          <p>Staten tok over mange av kirkens eiendommer.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event13')">
+          <h3>Etablering av et dansk styrt system</h3>
+          <p>Norge ble en del av en sentralisert dansk stat.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event14')">
+          <h3>Økonomisk omstilling</h3>
+          <p>Nye strukturer i handel og næringsliv endret økonomien.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event15')">
+          <h3>Kulturell tilpasning</h3>
+          <p>Endringer i kunst og litteratur med overgang til protestantisme.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1600-1699 -->
+    <section class="period">
+      <h2>1600-1699</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event16')">
+          <h3>Fortsatt dansk styre</h3>
+          <p>Norge forble under dansk styre med tett kulturell integrasjon.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event17')">
+          <h3>Utvikling av det norske bondesamfunnet</h3>
+          <p>Tradisjonelt landbruk og lokale tradisjoner fikk økt betydning.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event18')">
+          <h3>Handel og sjøfart</h3>
+          <p>Havnene, særlig Bergen, styrket Norges økonomi.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event19')">
+          <h3>Byvekst og urbanisering</h3>
+          <p>Vekst i byer som Oslo og Bergen med nye offentlige bygg.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event20')">
+          <h3>Kulturell utvikling</h3>
+          <p>Norske folke- og kunsttradisjoner utviklet seg videre.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1700-1799 -->
+    <section class="period">
+      <h2>1700-1799</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event21')">
+          <h3>Opplysningstiden og reformer</h3>
+          <p>Reformer fra opplysningstiden påvirket hele riket.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event22')">
+          <h3>Økt nasjonal bevissthet</h3>
+          <p>Fremveksten av nasjonal identitet tross dansk styre.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event23')">
+          <h3>Handels- og fiskerivekst</h3>
+          <p>Norge ble en viktig leverandør av sjømat og handelsvarer.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event24')">
+          <h3>Kulturell blomstring</h3>
+          <p>Litteratur og kunst formet en egen norsk identitet.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event25')">
+          <h3>Politiske spenninger</h3>
+          <p>Misnøye med dansk styre la grunnlaget for nasjonal frigjøring.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1800-1899 -->
+    <section class="period">
+      <h2>1800-1899</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event26')">
+          <h3>Grunnloven på Eidsvoll (1814)</h3>
+          <p>Grunnloven markerer starten på Norges kamp for selvstendighet.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event27')">
+          <h3>Union med Sverige (1814–1905)</h3>
+          <p>Norge var i union med Sverige, preget av nasjonal oppvåkning.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event28')">
+          <h3>Unionsoppløsningen (1905)</h3>
+          <p>Oppløsningen av unionen med Sverige ga Norge full uavhengighet.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event29')">
+          <h3>Språkstriden – Riksmål vs. Landsmål</h3>
+          <p>Debatten om skriftspråk formet den nasjonale identiteten.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event30')">
+          <h3>Modernisering og industrialisering</h3>
+          <p>Urbanisering og nye næringer la grunnlaget for det moderne Norge.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1900-1999 -->
+    <section class="period">
+      <h2>1900-1999</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event31')">
+          <h3>Kvinners stemmerett (1913)</h3>
+          <p>Innføringen av stemmerett for kvinner var et viktig steg mot likestilling.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event32')">
+          <h3>Motstand under andre verdenskrig (1940–1945)</h3>
+          <p>Motstandsbevegelsen spilte en avgjørende rolle under okkupasjonen.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event33')">
+          <h3>Bygging av velferdsstaten</h3>
+          <p>Etter krigen ble grunnlaget for en sosialdemokratisk velferdsstat lagt.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event34')">
+          <h3>Modernisering av monarkiet</h3>
+          <p>Kong Harald Vs og Dronning Sonja moderniserte monarkiet, blant annet gjennom bryllupet i 1968.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event35')">
+          <h3>Økonomisk transformasjon</h3>
+          <p>Oljeoppdagelsen og oljeøkonomien endret Norges økonomi fundamentalt.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 2000-2020 -->
+    <section class="period">
+      <h2>2000-2020</h2>
+      <div class="event-container">
+        <div class="event-card" onclick="openModal('event36')">
+          <h3>Prinsesse Mette-Marit og Kronprins Haakons bryllup (2001)</h3>
+          <p>Et moderne kongelig bryllup som moderniserte den kongelige familien.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event37')">
+          <h3>Terrorangrepet 22. juli (2011)</h3>
+          <p>Et tragisk angrep som rystet nasjonen og førte til omfattende debatter.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event38')">
+          <h3>Koronapandemien (2020–2022)</h3>
+          <p>Den globale pandemien påvirket helsevesen, økonomi og dagligliv.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event39')">
+          <h3>Digitalisering og teknologisk innovasjon</h3>
+          <p>Satsing på digital infrastruktur har preget Norge i det 21. århundre.</p>
+        </div>
+        <div class="event-card" onclick="openModal('event40')">
+          <h3>Fokus på klima og bærekraft</h3>
+          <p>Norge engasjerer seg i internasjonale klimaavtaler og fornybar energi.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal for hendelsesdetaljer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">Lukk</span>
+      <h3 id="modal-title">Hendelse Tittel</h3>
+      <p id="modal-description">Detaljert beskrivelse av hendelsen.</p>
+      <a id="modal-link" href="#" target="_blank">Les mer på Wikipedia</a>
     </div>
-</div>
+  </div>
 
-<audio id="ringTone" src="arash-broken-angel-ringtone-sad-ringtone-720p-00-61932-63588.mp3" preload="auto"></audio>
+  <script>
+    const modalData = {
+      event1: {
+        title: "Svartedauden (1349)",
+        description: "Den ødeleggende pestepidemien reduserte Norges befolkning drastisk og preget samfunnsstrukturene i århundrer.",
+        link: "https://no.wikipedia.org/wiki/Svartedauden"
+      },
+      event2: {
+        title: "Endringer i den politiske maktbalansen",
+        description: "Pestens følgevirkninger førte til nedgang i adelens og kirkens makt.",
+        link: "https://no.wikipedia.org/wiki/Politisk_makt"
+      },
+      event3: {
+        title: "Kristendommens etablering og kirkebygging",
+        description: "Den katolske kirkens struktur ble konsolidert, og mange katedraler ble bygget.",
+        link: "https://no.wikipedia.org/wiki/Kristendom"
+      },
+      event4: {
+        title: "Handel og kulturkontakt",
+        description: "Til tross for befolkningsnedgang fortsatte handelen med andre europeiske land.",
+        link: "https://no.wikipedia.org/wiki/Handel"
+      },
+      event5: {
+        title: "Begynnelsen av dansk innflytelse",
+        description: "Danske adelige og embetsmenn fikk økt innflytelse over Norge.",
+        link: "https://no.wikipedia.org/wiki/Danmark"
+      },
+      event6: {
+        title: "Kalmarunionens etablering (1397)",
+        description: "Norge ble en del av Kalmarunionen med Danmark og Sverige.",
+        link: "https://no.wikipedia.org/wiki/Kalmarunionen"
+      },
+      event7: {
+        title: "Konsolidering av unionen",
+        description: "Norske institusjoner ble integrert i unionens administrative system.",
+        link: "https://no.wikipedia.org/wiki/Union"
+      },
+      event8: {
+        title: "Handelsvekst i Bergen",
+        description: "Bergen vokste frem som et viktig handelsknutepunkt.",
+        link: "https://no.wikipedia.org/wiki/Bergen"
+      },
+      event9: {
+        title: "Utvikling av norsk lov og administrasjon",
+        description: "Rettssystemet ble tilpasset for å harmonisere med unionens behov.",
+        link: "https://no.wikipedia.org/wiki/Rettsvesen"
+      },
+      event10: {
+        title: "Kulturell påvirkning fra Europa",
+        description: "Renessanseideer og kulturelle impulser fra Europa begynte å sive inn.",
+        link: "https://no.wikipedia.org/wiki/Renessanse"
+      },
+      event11: {
+        title: "Reformasjonen i Norge (1537)",
+        description: "Overgangen til protestantisme førte til store endringer i kirkestrukturen.",
+        link: "https://no.wikipedia.org/wiki/Reformasjonen_i_Norge"
+      },
+      event12: {
+        title: "Reduksjon av kirkens eiendommer",
+        description: "Staten tok over mange av kirkens eiendommer under protestantismens inntog.",
+        link: "https://no.wikipedia.org/wiki/Kirke"
+      },
+      event13: {
+        title: "Etablering av et dansk styrt system",
+        description: "Norge ble en del av en sentralisert dansk stat med administrative reformer.",
+        link: "https://no.wikipedia.org/wiki/Dansk_styre"
+      },
+      event14: {
+        title: "Økonomisk omstilling",
+        description: "Nye strukturer i handel og næringsliv, med særlig fokus på fiskeri, endret økonomien.",
+        link: "https://no.wikipedia.org/wiki/Norsk_økonomi"
+      },
+      event15: {
+        title: "Kulturell tilpasning",
+        description: "Overgangen til protestantisme førte til varige endringer i kunst og litteratur.",
+        link: "https://no.wikipedia.org/wiki/Kunst"
+      },
+      event16: {
+        title: "Fortsatt dansk styre",
+        description: "Norge forble en del av det dansk-norske riket med tett kulturell integrasjon.",
+        link: "https://no.wikipedia.org/wiki/Dansk_norsk_union"
+      },
+      event17: {
+        title: "Utvikling av det norske bondesamfunnet",
+        description: "Lokalsamfunn og tradisjonelt landbruk fikk økt betydning.",
+        link: "https://no.wikipedia.org/wiki/Bonde"
+      },
+      event18: {
+        title: "Handel og sjøfart",
+        description: "Økt handel med utlandet, særlig gjennom havner som Bergen, styrket økonomien.",
+        link: "https://no.wikipedia.org/wiki/Sjøfart"
+      },
+      event19: {
+        title: "Byvekst og urbanisering",
+        description: "Vekst i byer som Oslo og Bergen førte til nye offentlige bygg og infrastruktur.",
+        link: "https://no.wikipedia.org/wiki/Urbanisering"
+      },
+      event20: {
+        title: "Kulturell utvikling",
+        description: "Folke- og kunsttradisjoner utviklet seg videre, med både norske og utenlandske impulser.",
+        link: "https://no.wikipedia.org/wiki/Kultur"
+      },
+      event21: {
+        title: "Opplysningstiden og reformer",
+        description: "Reformideer fra opplysningstiden la grunnlaget for administrative og juridiske forandringer.",
+        link: "https://no.wikipedia.org/wiki/Opplysningstiden"
+      },
+      event22: {
+        title: "Økt nasjonal bevissthet",
+        description: "Tidlige nasjonale strømninger vokste frem, til tross for dansk dominans.",
+        link: "https://no.wikipedia.org/wiki/Nasjonalisme"
+      },
+      event23: {
+        title: "Handels- og fiskerivekst",
+        description: "Norge ble en viktig leverandør av sjømat og handelsvarer til Europa.",
+        link: "https://no.wikipedia.org/wiki/Fiskeindustri"
+      },
+      event24: {
+        title: "Kulturell blomstring",
+        description: "Litteratur og kunst tok form som uttrykk for en egen norsk identitet.",
+        link: "https://no.wikipedia.org/wiki/Norsk_kultur"
+      },
+      event25: {
+        title: "Politiske spenninger",
+        description: "Misnøye med dansk styre la grunnlaget for nasjonal frigjøring.",
+        link: "https://no.wikipedia.org/wiki/Frigjøring"
+      },
+      event26: {
+        title: "Grunnloven på Eidsvoll (1814)",
+        description: "Grunnloven markerer starten på Norges kamp for selvstendighet og demokratiets fødsel.",
+        link: "https://no.wikipedia.org/wiki/Grunnloven_(1814)"
+      },
+      event27: {
+        title: "Union med Sverige (1814–1905)",
+        description: "Norge var i union med Sverige, preget av nasjonal oppvåkning og kamp for selvstendighet.",
+        link: "https://no.wikipedia.org/wiki/Unionsoppløsningen"
+      },
+      event28: {
+        title: "Unionsoppløsningen (1905)",
+        description: "Oppløsningen av unionen med Sverige ga Norge full uavhengighet.",
+        link: "https://no.wikipedia.org/wiki/Unionsoppløsningen"
+      },
+      event29: {
+        title: "Språkstriden – Riksmål vs. Landsmål",
+        description: "Debatten om hvilket skriftspråk som skulle representere Norge var essensiell for nasjonal identitet.",
+        link: "https://no.wikipedia.org/wiki/Norsk_skriftspr%C3%A5k"
+      },
+      event30: {
+        title: "Modernisering og industrialisering",
+        description: "Urbanisering, nye næringer og teknologiske fremskritt la grunnlaget for det moderne Norge.",
+        link: "https://no.wikipedia.org/wiki/Industrialisering"
+      },
+      event31: {
+        title: "Kvinners stemmerett (1913)",
+        description: "Innføringen av stemmerett for kvinner var et viktig steg mot likestilling.",
+        link: "https://no.wikipedia.org/wiki/Kvinners_stemmerett"
+      },
+      event32: {
+        title: "Motstand under andre verdenskrig (1940–1945)",
+        description: "Den norske motstandsbevegelsen spilte en avgjørende rolle under okkupasjonen.",
+        link: "https://no.wikipedia.org/wiki/Andre_verds_krig"
+      },
+      event33: {
+        title: "Bygging av velferdsstaten",
+        description: "Etter krigen ble det lagt grunnlaget for en moderne, sosialdemokratisk velferdsstat.",
+        link: "https://no.wikipedia.org/wiki/Velferdsstat"
+      },
+      event34: {
+        title: "Modernisering av monarkiet",
+        description: "Kong Harald Vs og Dronning Sonja moderniserte monarkiet, blant annet gjennom bryllupet i 1968.",
+        link: "https://no.wikipedia.org/wiki/Kongefamilien_i_Norge"
+      },
+      event35: {
+        title: "Økonomisk transformasjon",
+        description: "Oljeoppdagelsen og oljeøkonomien endret Norges økonomi fundamentalt.",
+        link: "https://no.wikipedia.org/wiki/Oljeindustri"
+      },
+      event36: {
+        title: "Prinsesse Mette-Marit og Kronprins Haakons bryllup (2001)",
+        description: "Et moderne kongelig bryllup som moderniserte den kongelige familien.",
+        link: "https://no.wikipedia.org/wiki/Kongefamilien_i_Norge"
+      },
+      event37: {
+        title: "Terrorangrepet 22. juli (2011)",
+        description: "Et tragisk angrep som rystet nasjonen og førte til omfattende debatter.",
+        link: "https://no.wikipedia.org/wiki/22._juli-angrepet"
+      },
+      event38: {
+        title: "Koronapandemien (2020–2022)",
+        description: "Den globale pandemien påvirket helsevesen, økonomi og dagligliv.",
+        link: "https://no.wikipedia.org/wiki/Koronaviruspandemien"
+      },
+      event39: {
+        title: "Digitalisering og teknologisk innovasjon",
+        description: "Satsing på digital infrastruktur og ny teknologi preger Norge i det 21. århundre.",
+        link: "https://no.wikipedia.org/wiki/Digitalisering"
+      },
+      event40: {
+        title: "Fokus på klima og bærekraft",
+        description: "Norge engasjerer seg i internasjonale klimaavtaler og utvikler fornybar energi for en grønnere fremtid.",
+        link: "https://no.wikipedia.org/wiki/Klimaendringer"
+      }
+    };
 
-<script>
-    let tasks = [];
+    function openModal(eventId) {
+      const data = modalData[eventId];
+      if (data) {
+        document.getElementById('modal').style.display = 'flex';
+        document.getElementById('modal-title').innerText = data.title;
+        document.getElementById('modal-description').innerText = data.description;
+        document.getElementById('modal-link').href = data.link;
+      }
+    }
 
-    function addTaskToList() {
-        let taskInput = document.getElementById('taskInput');
-        let taskName = taskInput.value.trim();
-        let taskTime = parseInt(document.getElementById('taskTimeSelect').value);
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
 
-        if (taskName !== '') {
-            let task = {
-                taskName: taskName,
-                status: "Not Started",
-                timeRemaining: taskTime * 60,
-                timer: null,
-                pauseTime: parseInt(document.getElementById('pauseTimeSelect').value) * 60,
-                isOnBreak: false
-            };
+    // Søkefunksjon for å filtrere event-kort
+    function filterEvents() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.event-card');
 
-            tasks.push(task);
-            updateTaskList();
-            updateTaskStatusTable();
-            taskInput.value = ''; 
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
         }
+      });
     }
-
-    function updateTaskList() {
-        let taskList = document.getElementById('taskList');
-        taskList.innerHTML = '';
-
-        tasks.forEach((task, index) => {
-            let li = document.createElement('li');
-            li.textContent = `${task.taskName} - ${task.status}`;
-            taskList.appendChild(li);
-        });
-    }
-
-    function updateTaskStatusTable() {
-        let taskStatusTableBody = document.getElementById('taskStatusTableBody');
-        taskStatusTableBody.innerHTML = '';
-
-        tasks.forEach((task, index) => {
-            let row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${task.taskName}</td>
-                <td>${task.status}</td>
-                <td>${formatTime(task.timeRemaining)}</td>
-                <td><button onclick="startTimer(${index})">Start</button></td>
-                <td><button onclick="markTaskAsDone(${index})">Done</button></td>
-                <td><button onclick="removeTask(${index})">Remove</button></td>
-            `;
-            taskStatusTableBody.appendChild(row);
-        });
-    }
-
-    function startTimer(taskIndex) {
-        let task = tasks[taskIndex];
-        if (task.timer) clearInterval(task.timer);
-
-        task.timer = setInterval(() => {
-            if (task.isOnBreak) {
-                if (task.timeRemaining > 0) {
-                    task.timeRemaining--;
-                } else {
-                    clearInterval(task.timer);
-                    task.isOnBreak = false;
-                    alert("It's time for a break!");
-                }
-            } else {
-                if (task.timeRemaining > 0) {
-                    task.timeRemaining--;
-                } else {
-                    task.status = "Complete";
-                    clearInterval(task.timer);
-                    updateTaskList();
-                    setTimeout(showPopup, 1000); // Show the popup after a second
-                }
-            }
-            updateTaskStatusTable();
-        }, 1000);
-    }
-
-    function markTaskAsDone(taskIndex) {
-        tasks[taskIndex].status = 'Complete';
-        updateTaskList();
-        setTimeout(showPopup, 1000); // Show the popup after marking task as done
-    }
-
-    function removeTask(taskIndex) {
-        tasks.splice(taskIndex, 1);
-        updateTaskList();
-        updateTaskStatusTable();
-    }
-
-    function showPopup() {
-        document.getElementById('popup').style.display = 'flex';
-    }
-
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
-    }
-
-    function formatTime(seconds) {
-        let minutes = Math.floor(seconds / 60);
-        let remainingSeconds = seconds % 60;
-        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-    }
-</script>
-
+  </script>
 </body>
 </html>
