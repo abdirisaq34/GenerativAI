@@ -30,13 +30,30 @@
       border-radius: 5px;
       font-size: 1em;
     }
+    /* Endret slik at tidslinjen vises horisontalt */
     .timeline {
       padding: 20px;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
     }
+    .timeline.active {
+      cursor: grabbing;
+    }
+    /* Skjul scrollbar (for WebKit-nettlesere) */
+    .timeline::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hver periode vises som et horisontalt kort */
     .period {
       width: 100%;
       max-width: 800px;
-      margin: 40px auto;
+      margin: 40px 20px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
     }
     .period h2 {
       background-color: #f4f4f4;
@@ -82,18 +99,15 @@
       justify-content: center;
       align-items: center;
     }
-
-    #modal-link{
-    background-color: #674caf;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
+    #modal-link {
+      background-color: #674caf;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
     }
-
-    
     .modal-content {
       background-color: #fff;
       padding: 20px;
@@ -133,19 +147,19 @@
         </div>
         <div class="event-card" onclick="openModal('event2')">
           <h3>Endringer i den politiske maktbalansen</h3>
-          <p>Pestens følgevirkninger svekket adel og kirke.</p>
+          <img src="IMGforEvent/maktbalanse.jpg" alt="maktbalanse">
         </div>
         <div class="event-card" onclick="openModal('event3')">
           <h3>Kristendommens etablering og kirkebygging</h3>
-          <p>Kirkelig struktur ble konsolidert og mange katedraler bygget.</p>
+          <img src="IMGforEvent/kattedral.jpg" alt="katedraler">
         </div>
         <div class="event-card" onclick="openModal('event4')">
           <h3>Handel og kulturkontakt</h3>
-          <p>Handel med Europa fortsatte til tross for befolkningsnedgang.</p>
+          <img src="IMGforEvent/europa.jpg" alt="handel_i_europa">
         </div>
         <div class="event-card" onclick="openModal('event5')">
           <h3>Begynnelsen av dansk innflytelse</h3>
-          <p>Danske adelige og embetsmenn fikk økt innflytelse over Norge.</p>
+          <img src="IMGforEvent/danskinflyttelse.jpg" alt="">
         </div>
       </div>
     </section>
@@ -156,23 +170,23 @@
       <div class="event-container">
         <div class="event-card" onclick="openModal('event6')">
           <h3>Kalmarunionens etablering (1397)</h3>
-          <p>Norge ble med i Kalmarunionen med Danmark og Sverige.</p>
+          <img src="IMGforEvent/kalmarunioen.jpg" alt="kalmarunioen">
         </div>
         <div class="event-card" onclick="openModal('event7')">
           <h3>Konsolidering av unionen</h3>
-          <p>Norske institusjoner ble integrert i unionens system.</p>
+          <img src="IMGforEvent/union.jpg" alt="norge_involvert">
         </div>
         <div class="event-card" onclick="openModal('event8')">
           <h3>Handelsvekst i Bergen</h3>
-          <p>Bergen vokste frem som et viktig handelsknutepunkt.</p>
+          <img src="IMGforEvent/bergenknyttepunkt.jpg" alt="Bergen">
         </div>
         <div class="event-card" onclick="openModal('event9')">
           <h3>Utvikling av norsk lov og administrasjon</h3>
-          <p>Rettssystemet ble tilpasset unionens behov.</p>
+          <img src="IMGforEvent/rettsystem.jpg" alt="norsk_lov">
         </div>
         <div class="event-card" onclick="openModal('event10')">
           <h3>Kulturell påvirkning fra Europa</h3>
-          <p>Renessanseideer begynte å sive inn.</p>
+          <img src="IMGforEvent/renesansen.jpg" alt="renessanseideer">
         </div>
       </div>
     </section>
@@ -183,23 +197,23 @@
       <div class="event-container">
         <div class="event-card" onclick="openModal('event11')">
           <h3>Reformasjonen i Norge (1537)</h3>
-          <p>Overgang til protestantisme forandret kirkestrukturen.</p>
+          <img src="IMGforEvent/reformasjonen.jpg" alt="Reformasjonen">
         </div>
         <div class="event-card" onclick="openModal('event12')">
           <h3>Reduksjon av kirkens eiendommer</h3>
-          <p>Staten tok over mange av kirkens eiendommer.</p>
+          <img src="IMGforEvent/kirkeogstat.jpg" alt="kirker_til_stat">
         </div>
         <div class="event-card" onclick="openModal('event13')">
           <h3>Etablering av et dansk styrt system</h3>
-          <p>Norge ble en del av en sentralisert dansk stat.</p>
+          <img src="IMGforEvent/danskstyring.jpg" alt="danskstyring">
         </div>
         <div class="event-card" onclick="openModal('event14')">
           <h3>Økonomisk omstilling</h3>
-          <p>Nye strukturer i handel og næringsliv endret økonomien.</p>
+          <img src="IMGforEvent/økonomiskvekst.jpg" alt="økonomiskvekst">
         </div>
         <div class="event-card" onclick="openModal('event15')">
           <h3>Kulturell tilpasning</h3>
-          <p>Endringer i kunst og litteratur med overgang til protestantisme.</p>
+          <img src="IMGforEvent/overgangtilprotantesime.jpg" alt="">
         </div>
       </div>
     </section>
@@ -210,23 +224,23 @@
       <div class="event-container">
         <div class="event-card" onclick="openModal('event16')">
           <h3>Fortsatt dansk styre</h3>
-          <p>Norge forble under dansk styre med tett kulturell integrasjon.</p>
+          <img src="IMGforEvent/danskkultur.jpg" alt="Dansk_styre">
         </div>
         <div class="event-card" onclick="openModal('event17')">
           <h3>Utvikling av det norske bondesamfunnet</h3>
-          <p>Tradisjonelt landbruk og lokale tradisjoner fikk økt betydning.</p>
+          <img src="IMGforEvent/norskbondesamfunn.jpg" alt="norskbondesamfunn">
         </div>
         <div class="event-card" onclick="openModal('event18')">
           <h3>Handel og sjøfart</h3>
-          <p>Havnene, særlig Bergen, styrket Norges økonomi.</p>
+          <img src="IMGforEvent/norgeshandelsvekst.jpg" alt="Handelsvekst">
         </div>
         <div class="event-card" onclick="openModal('event19')">
           <h3>Byvekst og urbanisering</h3>
-          <p>Vekst i byer som Oslo og Bergen med nye offentlige bygg.</p>
+          <img src="IMGforEvent/urbaniseringen.jpg" alt="urbanisering">
         </div>
         <div class="event-card" onclick="openModal('event20')">
           <h3>Kulturell utvikling</h3>
-          <p>Norske folke- og kunsttradisjoner utviklet seg videre.</p>
+          <img src="IMGforEvent/norskkulturvekst.jpg" alt="utvikling_av_norsk_kultur">
         </div>
       </div>
     </section>
@@ -237,23 +251,23 @@
       <div class="event-container">
         <div class="event-card" onclick="openModal('event21')">
           <h3>Opplysningstiden og reformer</h3>
-          <p>Reformer fra opplysningstiden påvirket hele riket.</p>
+          <img src="IMGforEvent/opplysningstiden.jpg" alt="reformer">
         </div>
         <div class="event-card" onclick="openModal('event22')">
           <h3>Økt nasjonal bevissthet</h3>
-          <p>Fremveksten av nasjonal identitet tross dansk styre.</p>
+          <img src="IMGforEvent/norskvekst.jpg" alt="Norsk_kultur">
         </div>
         <div class="event-card" onclick="openModal('event23')">
           <h3>Handels- og fiskerivekst</h3>
-          <p>Norge ble en viktig leverandør av sjømat og handelsvarer.</p>
+          <img src="IMGforEvent/fikseri.jpg" alt="fiskerivekst">
         </div>
         <div class="event-card" onclick="openModal('event24')">
           <h3>Kulturell blomstring</h3>
-          <p>Litteratur og kunst formet en egen norsk identitet.</p>
+          <img src="IMGforEvent/vekstikultur.jpg" alt="kulturell">
         </div>
         <div class="event-card" onclick="openModal('event25')">
           <h3>Politiske spenninger</h3>
-          <p>Misnøye med dansk styre la grunnlaget for nasjonal frigjøring.</p>
+          <img src="IMGforEvent/politiskspenning.jpg" alt="politiskspenning">
         </div>
       </div>
     </section>
@@ -264,23 +278,23 @@
       <div class="event-container">
         <div class="event-card" onclick="openModal('event26')">
           <h3>Grunnloven på Eidsvoll (1814)</h3>
-          <p>Grunnloven markerer starten på Norges kamp for selvstendighet.</p>
+          <img src="IMGforEvent/1814.jpg" alt="Grunnloven">
         </div>
         <div class="event-card" onclick="openModal('event27')">
           <h3>Union med Sverige (1814–1905)</h3>
-          <p>Norge var i union med Sverige, preget av nasjonal oppvåkning.</p>
+          <img src="IMGforEvent/norgesverige.jpg" alt="unionmedsverige">
         </div>
         <div class="event-card" onclick="openModal('event28')">
           <h3>Unionsoppløsningen (1905)</h3>
-          <p>Oppløsningen av unionen med Sverige ga Norge full uavhengighet.</p>
+          <img src="IMGforEvent/selvstendighet.jpg" alt="Unionsoppløsningen">
         </div>
         <div class="event-card" onclick="openModal('event29')">
           <h3>Språkstriden – Riksmål vs. Landsmål</h3>
-          <p>Debatten om skriftspråk formet den nasjonale identiteten.</p>
+          <img src="IMGforEvent/språkdebatten.jpg" alt="riksvslands">
         </div>
         <div class="event-card" onclick="openModal('event30')">
           <h3>Modernisering og industrialisering</h3>
-          <p>Urbanisering og nye næringer la grunnlaget for det moderne Norge.</p>
+          <img src="IMGforEvent/industriellerevulusjonen.jpg" alt="industrialisering">
         </div>
       </div>
     </section>
@@ -299,15 +313,15 @@
         </div>
         <div class="event-card" onclick="openModal('event33')">
           <h3>Bygging av velferdsstaten</h3>
-          <p>Etter krigen ble grunnlaget for en sosialdemokratisk velferdsstat lagt.</p>
+          <img src="IMGforEvent/velferdstaten.jpg" alt="staten">
         </div>
         <div class="event-card" onclick="openModal('event34')">
           <h3>Modernisering av monarkiet</h3>
-          <p>Kong Harald Vs og Dronning Sonja moderniserte monarkiet, blant annet gjennom bryllupet i 1968.</p>
+          <img src="IMGforEvent/monarkiinorge.jpg" alt="monarkiet">
         </div>
         <div class="event-card" onclick="openModal('event35')">
           <h3>Økonomisk transformasjon</h3>
-          <p>Oljeoppdagelsen og oljeøkonomien endret Norges økonomi fundamentalt.</p>
+          <img src="IMGforEvent/ojliefunn.jpg" alt="ojliefunn">
         </div>
       </div>
     </section>
@@ -326,7 +340,7 @@
         </div>
         <div class="event-card" onclick="openModal('event38')">
           <h3>Koronapandemien (2020–2022)</h3>
-          <img src="IMGforEvent/koronapandemien.jpg" alt="pandemien" >
+          <img src="IMGforEvent/koronapandemien.jpg" alt="pandemien">
         </div>
         <div class="event-card" onclick="openModal('event39')">
           <h3>Digitalisering og teknologisk innovasjon</h3>
@@ -354,22 +368,22 @@
     const modalData = {
       event1: {
         title: "Svartedauden (1349)",
-        description: "Den ødeleggende pestepidemien reduserte Norges befolkning drastisk og preget samfunnsstrukturene i århundrer.",
+        description: "Svartedauden, også kjent som den store pesten, var en av de mest katastrofale epidemiene i menneskets historie. Den nådde Norge i 1349 og førte til at omtrent halvparten av landets befolkning ble utryddet. Pesten spredte seg raskt fra kysten og rammet både byer og bygder. Dens virkning på samfunnet var ødeleggende, og etterlot seg et land med dramatisk redusert arbeidsstyrke, økonomisk nedgang og endringer i den sosiale strukturen. Døde mennesker ble gravlagt raskt og i massegraver, og den massive befolkningsreduksjonen førte til en permanent endring i jordbruket og de politiske strukturene.",
         link: "https://no.wikipedia.org/wiki/Svartedauden"
       },
       event2: {
         title: "Endringer i den politiske maktbalansen",
-        description: "Pestens følgevirkninger førte til nedgang i adelens og kirkens makt.",
+        description: "Etter Svartedauden ble det en drastisk endring i den politiske maktbalansen i Norge. Adelen og kirken, som før var de dominerende maktstrukturene, mistet mye av sin innflytelse på grunn av befolkningsnedgangen. Deres landsbyer og godseiende eiendommer ble overtatt av de som overlevde, og dette førte til en omfordeling av makt. Samtidig oppsto nye sosiale klasser som fikk muligheten til å få innflytelse i samfunnet. Den svekkede maktbalansen førte til økt politisk usikkerhet, som på mange måter satte scenen for senere utviklinger som unionene med Danmark og Sverige.",
         link: "https://no.wikipedia.org/wiki/Politisk_makt"
       },
       event3: {
         title: "Kristendommens etablering og kirkebygging",
-        description: "Den katolske kirkens struktur ble konsolidert, og mange katedraler ble bygget.",
+        description: "Kristendommens etablering i Norge var et langt og komplekst forløp. Allerede før Svartedauden hadde kristendommen blitt innført gjennom politisk press og kirkelig misjon. På 1100- og 1200-tallet begynte den katolske kirken å konsolidere sin makt i Norge, og mange storslåtte katedraler og kirker ble bygget som et resultat. Disse bygningene var ikke bare religiøse steder, men også politiske symboler på kirkens makt. Kirken spilte en nøkkelrolle i både administrasjon og utdanning, og dens innflytelse strakte seg over store deler av det norske samfunnet i flere hundre år.",
         link: "https://no.wikipedia.org/wiki/Kristendom"
       },
       event4: {
         title: "Handel og kulturkontakt",
-        description: "Til tross for befolkningsnedgang fortsatte handelen med andre europeiske land.",
+        description: "Selv om befolkningsnedgangen etter Svartedauden førte til en betydelig svekkelse av økonomien i Norge, var handelen fortsatt en viktig del av den økonomiske strukturen. Byene langs kysten, spesielt Bergen, opplevde en betydelig handelsvekst gjennom kontaktene med resten av Europa. Dette bidro til at Norge ble en viktig aktør i den nordeuropeiske handelsnettet. Kulturkontakt mellom Norge og de europeiske landene, særlig gjennom handel med Hansa-forbundet, førte til en utveksling av ideer, kunst og litteratur som preget den norske kulturen i flere generasjoner.",
         link: "https://no.wikipedia.org/wiki/Handel"
       },
       event5: {
@@ -534,7 +548,7 @@
       },
       event37: {
         title: "Terrorangrepet 22. juli (2011)",
-        description: "Et tragisk angrep som rystet nasjonen og førte til omfattende debatter.",
+        description: "Koronapandemien som begynte i 2020 hadde en global innvirkning og rystet Norge, som måtte tilpasse seg en rekke helse- og sikkerhetstiltak for å beskytte befolkningen. Som i mange andre land førte pandemien til store omveltninger i arbeidslivet, utdanning og helsevesen. Samfunnet ble tvinget til å tilpasse seg nye måter å leve på, som sosial distansering, hjemmeundervisning og digitalisering. Pandemien hadde også en sterk økonomisk påvirkning, spesielt for småbedrifter og de som arbeidet i turistindustrien. Krisen førte imidlertid også til økt fellesskapsfølelse og solidaritet i den norske befolkningen, og har hatt langvarige konsekvenser på hvordan vi ser på helse, teknologi og samfunnet.",
         link: "https://no.wikipedia.org/wiki/22._juli-angrepet"
       },
       event38: {
@@ -582,6 +596,37 @@
         }
       });
     }
+
+    // Legger til dra-for å bla horisontalt i tidslinjen
+    const timeline = document.querySelector('.timeline');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    timeline.addEventListener('mousedown', (e) => {
+      isDown = true;
+      timeline.classList.add('active');
+      startX = e.pageX - timeline.offsetLeft;
+      scrollLeft = timeline.scrollLeft;
+    });
+    
+    timeline.addEventListener('mouseleave', () => {
+      isDown = false;
+      timeline.classList.remove('active');
+    });
+    
+    timeline.addEventListener('mouseup', () => {
+      isDown = false;
+      timeline.classList.remove('active');
+    });
+    
+    timeline.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - timeline.offsetLeft;
+      const walk = (x - startX) * 2; // juster hastigheten om ønskelig
+      timeline.scrollLeft = scrollLeft - walk;
+    });
   </script>
 </body>
 </html>
