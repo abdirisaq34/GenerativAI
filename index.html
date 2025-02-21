@@ -3,132 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/style.css">
   <title>Tidslinje for Norsk Historie</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    /* Søkefelt stil */
-    .search-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .search-container input {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-    /* Endret slik at tidslinjen vises horisontalt */
-    .timeline {
-      padding: 20px;
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      cursor: grab;
-    }
-    .timeline.active {
-      cursor: grabbing;
-    }
-    /* Skjul scrollbar (for WebKit-nettlesere) */
-    .timeline::-webkit-scrollbar {
-      display: none;
-    }
-    /* Hver periode vises som et horisontalt kort */
-    .period {
-      width: 100%;
-      max-width: 800px;
-      margin: 40px 20px;
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-    }
-    .period h2 {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border-left: 5px solid #4CAF50;
-    }
-    /* Container med flexbox for hendelsene */
-    .event-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    .event-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 10px;
-      width: 100%;
-      max-width: 250px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .event-card:hover {
-      transform: scale(1.02);
-    }
-    .event-card img {
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-    }
-    #modal-link {
-      background-color: #674caf;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .modal-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      max-width: 500px;
-      width: 90%;
-    }
-    .close-btn {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Tidslinje for Viktige Hendelser i Norsk Historie</h1>
-    <p>Utforsk viktige hendelser i Norges historie gjennom denne interaktive tidslinjen.</p>
+    <h1>Dette er en tidslinje for viktige hendelser i Norsk historie</h1>
+    <p>Utforsk de aller viktigste hendelsene i Norges historie gjennom denne interaktive tidslinjen</p>
   </header>
   
   <!-- Søkefelt -->
@@ -388,162 +269,162 @@
       },
       event5: {
         title: "Begynnelsen av dansk innflytelse",
-        description: "Danske adelige og embetsmenn fikk økt innflytelse over Norge.",
+        description: "Fra 1500-tallet fikk danske adelige og embetsmenn økt innflytelse i Norge, som var under dansk styre. Denne perioden markerte starten på en langvarig politisk og kulturell dominans fra Danmark, som fikk stor betydning for utviklingen av det norske samfunnet, spesielt i form av administrasjon og lovgivning. Danmark ble den dominerende makten i unionen, og norsk politikk ble sterkt påvirket av dansk beslutningstaking",
         link: "https://no.wikipedia.org/wiki/Danmark"
       },
       event6: {
         title: "Kalmarunionens etablering (1397)",
-        description: "Norge ble en del av Kalmarunionen med Danmark og Sverige.",
+        description: "I 1397 ble Kalmarunionen etablert, og Norge ble en del av en politisk allianse med Danmark og Sverige. Unionen var ment å styrke de nordiske landene mot ytre trusler, men førte til langvarig politisk sammenblanding og gradvis svekket norsk selvstyre. Unionens struktur og ledelse var dominert av Danmark, noe som førte til voksende misnøye i Norge",
         link: "https://no.wikipedia.org/wiki/Kalmarunionen"
       },
       event7: {
         title: "Konsolidering av unionen",
-        description: "Norske institusjoner ble integrert i unionens administrative system.",
+        description: "I løpet av de neste hundreårene ble Norges institusjoner gradvis integrert i det administrative systemet til Kalmarunionen, med Danmark som den dominerende makten. Norge fikk beholde en viss grad av autonomi, men de viktigste politiske og økonomiske beslutningene ble tatt i København. Denne sentraliseringen av makt reduserte Norges innflytelse på nasjonens utvikling og la grunnlaget for en gradvis svekkelse av norsk selvstendighet",
         link: "https://no.wikipedia.org/wiki/Union"
       },
       event8: {
         title: "Handelsvekst i Bergen",
-        description: "Bergen vokste frem som et viktig handelsknutepunkt.",
+        description: "Bergen vokste frem som et viktig handelsknutepunkt i middelalderen, med sin strategiske beliggenhet mellom Østersjøen og Atlanterhavet. Byens handel, særlig innen fiskeri og eksport av varer som tømmer og metall, var avgjørende for Norges økonomi. Denne handelsveksten førte til at Bergen ble et økonomisk og kulturelt sentrum, og byen var en viktig aktør i det internasjonale markedet i flere hundreår ",
         link: "https://no.wikipedia.org/wiki/Bergen"
       },
       event9: {
         title: "Utvikling av norsk lov og administrasjon",
-        description: "Rettssystemet ble tilpasset for å harmonisere med unionens behov.",
+        description: "Under dansk styre ble Norges rettssystem og administrasjon tilpasset unionens behov. Dette innebar blant annet endringer i lokale rettspraksiser og en økt sentralisering av makt. For å harmonisere med unionens struktur ble også lovgivningen gradvis påvirket av danske modeller, noe som markerte en periode med tilpasning til danske administrative systemer",
         link: "https://no.wikipedia.org/wiki/Rettsvesen"
       },
       event10: {
         title: "Kulturell påvirkning fra Europa",
-        description: "Renessanseideer og kulturelle impulser fra Europa begynte å sive inn.",
+        description: "I løpet av 1500-tallet begynte renessanseideer og kulturelle impulser fra Europa å påvirke Norge, særlig gjennom kontakt med Danmark og Tyskland. Disse ideene førte til endringer innen kunst, litteratur og vitenskap, og bidro til utviklingen av en ny intellektuell og kulturell retning i Norge. Dette var en periode preget av kreativ utfoldelse, som også speilet endringer i den politiske og religiøse strukturen i Europa",
         link: "https://no.wikipedia.org/wiki/Renessanse"
       },
       event11: {
         title: "Reformasjonen i Norge (1537)",
-        description: "Overgangen til protestantisme førte til store endringer i kirkestrukturen.",
+        description: "Reformasjonen i 1537 førte til at Norge, som en del av Danmark-Norge, gikk over fra katolisisme til protestantisme. Denne overgangen medførte store endringer i kirkestrukturen, med opprettelsen av den lutherske kirke som statens religion. Mange kirkelige eiendommer ble konfiskert av staten, og reformasjonen hadde vidtrekkende konsekvenser for både religiøse og sosiale forhold i Norge",
         link: "https://no.wikipedia.org/wiki/Reformasjonen_i_Norge"
       },
       event12: {
         title: "Reduksjon av kirkens eiendommer",
-        description: "Staten tok over mange av kirkens eiendommer under protestantismens inntog.",
+        description: "Under reformasjonen i Norge ble mange av kirkens eiendommer tatt over av staten. Denne prosessen var en del av den større overgangen til protestantisme, der kirkens makt og innflytelse ble sterkt redusert. Dette førte til en omfordeling av eiendommer og ressurser, som bidro til at staten fikk økt økonomisk kontroll og makt over kirkens tidligere posisjoner",
         link: "https://no.wikipedia.org/wiki/Kirke"
       },
       event13: {
         title: "Etablering av et dansk styrt system",
-        description: "Norge ble en del av en sentralisert dansk stat med administrative reformer.",
+        description: "Da Danmark-Norge ble en sentralisert stat, ble Norge en del av et dansk-styrt system med administrative reformer. Det ble etablert et sterkt, sentralisert statssystem som reduserte Norges politiske selvstendighet og la makten i hendene på den danske kongen og hans administrasjon. Dette systemet medførte en økt integrasjon av Norge i det dansk-norske riket og formet landets politiske struktur for mange år framover",
         link: "https://no.wikipedia.org/wiki/Dansk_styre"
       },
       event14: {
         title: "Økonomisk omstilling",
-        description: "Nye strukturer i handel og næringsliv, med særlig fokus på fiskeri, endret økonomien.",
+        description: "I perioden etter reformasjonen opplevde Norge en økonomisk omstilling, spesielt innen handel og fiskeri. Norge ble en viktig aktør i den europeiske sjømatindustrien, og den økte handelsaktiviteten førte til økonomisk vekst. De nye strukturene i handel og næringsliv, med fokus på fiske og eksport, var avgjørende for utviklingen av norsk økonomi på 1600-tallet og 1700-tallet",
         link: "https://no.wikipedia.org/wiki/Norsk_økonomi"
       },
       event15: {
         title: "Kulturell tilpasning",
-        description: "Overgangen til protestantisme førte til varige endringer i kunst og litteratur.",
+        description: "Overgangen til protestantisme førte til varige endringer i norsk kunst og litteratur. Protestantismen påvirket ikke bare religionen, men også kunstens rolle i samfunnet. Det ble lagt større vekt på den personlige troen og bibelen, og dette reflekteres i kunst og litteratur fra perioden, som i stor grad var preget av religiøs tematisering og uttrykk for nasjonal identitet",
         link: "https://no.wikipedia.org/wiki/Kunst"
       },
       event16: {
         title: "Fortsatt dansk styre",
-        description: "Norge forble en del av det dansk-norske riket med tett kulturell integrasjon.",
+        description: "I flere hundre år forble Norge en del av det dansk-norske riket, hvor dansk hadde den ledende rollen både politisk og kulturelt. Det danske styret førte til tett kulturell integrasjon, og Danmark hadde stor innflytelse på norsk samfunnsutvikling. Denne perioden var preget av en stabil, men ujevn maktfordeling, der Norge på mange måter var underordnet Danmark både politisk og kulturelt ",
         link: "https://no.wikipedia.org/wiki/Dansk_norsk_union"
       },
       event17: {
         title: "Utvikling av det norske bondesamfunnet",
-        description: "Lokalsamfunn og tradisjonelt landbruk fikk økt betydning.",
+        description: "I løpet av middelalderen og tidlig moderne tid ble det norske bondesamfunnet en viktig del av landets økonomi og struktur. Lokalsamfunnene vokste i betydning, og tradisjonelt landbruk ble den viktigste næringen for store deler av befolkningen. Denne utviklingen førte til økt fokus på landbrukets økonomiske verdi og påvirket både sosial struktur og politikk i Norge ",
         link: "https://no.wikipedia.org/wiki/Bonde"
       },
       event18: {
         title: "Handel og sjøfart",
-        description: "Økt handel med utlandet, særlig gjennom havner som Bergen, styrket økonomien.",
+        description: "Norge ble på 1600- og 1700-tallet en viktig aktør i den internasjonale handelen, spesielt innen sjøfart. Byer som Bergen og Oslo ble viktige havnebyer, og eksporten av varer som fisk og tømmer ble en sentral del av økonomien. Den maritime aktiviteten førte til økt kontakt med andre europeiske land og bidro til økonomisk vekst i Norge",
         link: "https://no.wikipedia.org/wiki/Sjøfart"
       },
       event19: {
         title: "Byvekst og urbanisering",
-        description: "Vekst i byer som Oslo og Bergen førte til nye offentlige bygg og infrastruktur.",
+        description: "Byvekst og urbanisering var viktige utviklingstrekk i Norge på 1800-tallet, særlig i byer som Oslo og Bergen. Økt befolkning, handel og industri førte til nye offentlige bygg og infrastrukturelle forbedringer. Denne urbaniseringen var med på å forme det moderne Norge, hvor byene ble viktige sentre for økonomisk og kulturell aktivitet",
         link: "https://no.wikipedia.org/wiki/Urbanisering"
       },
       event20: {
         title: "Kulturell utvikling",
-        description: "Folke- og kunsttradisjoner utviklet seg videre, med både norske og utenlandske impulser.",
+        description: "Norsk kultur utviklet seg i stor grad gjennom påvirkning fra både innenlandske tradisjoner og utenlandske impulser, særlig fra Europa. Denne utviklingen reflekterte en gradvis endring i nasjonal identitet og kunstnerisk uttrykk, og perioden ble preget av en blomstring i litteratur, musikk og kunst. Den kulturelle utviklingen spilte en viktig rolle i formingen av et nasjonalt fellesskap",
         link: "https://no.wikipedia.org/wiki/Kultur"
       },
       event21: {
         title: "Opplysningstiden og reformer",
-        description: "Reformideer fra opplysningstiden la grunnlaget for administrative og juridiske forandringer.",
+        description: "Opplysningstiden på 1700-tallet førte til nye reformer innen politikk, økonomi og sosial struktur. Ideene om rettigheter, opplysning og vitenskap begynte å få fotfeste i Norge, og førte til viktige endringer i både administrasjon og lovgivning. Reformene som ble gjennomført i denne perioden hadde stor betydning for utviklingen av et mer moderne samfunn i Norge",
         link: "https://no.wikipedia.org/wiki/Opplysningstiden"
       },
       event22: {
         title: "Økt nasjonal bevissthet",
-        description: "Tidlige nasjonale strømninger vokste frem, til tross for dansk dominans.",
+        description: "Til tross for dansk dominans på 1800-tallet vokste nasjonal bevissthet i Norge. Tidlige nasjonale strømninger, som fokuserte på norsk kultur, språk og historie, førte til økte krav om mer selvstyre og uavhengighet. Dette dannet grunnlaget for nasjonalismens fremvekst, som skulle spille en viktig rolle i oppløsningen av unionen med Danmark og senere opprettelsen av den norske nasjonen",
         link: "https://no.wikipedia.org/wiki/Nasjonalisme"
       },
       event23: {
         title: "Handels- og fiskerivekst",
-        description: "Norge ble en viktig leverandør av sjømat og handelsvarer til Europa.",
+        description: "På 1600- og 1700-tallet ble Norge en viktig leverandør av sjømat og andre handelsvarer til Europa. Handelen med tømmer, fisk og andre naturressurser styrket økonomien og gjorde Norge til en betydelig handelsnasjon. Denne veksten i handel og fiske var med på å forme Norges økonomiske landskap i denne perioden",
         link: "https://no.wikipedia.org/wiki/Fiskeindustri"
       },
       event24: {
         title: "Kulturell blomstring",
-        description: "Litteratur og kunst tok form som uttrykk for en egen norsk identitet.",
+        description: "På 1800-tallet tok norsk litteratur og kunst form som uttrykk for en egen norsk identitet. Denne kulturelle blomstringen reflekterte landets nasjonale oppvåkning og ønsket om å fremme en norsk kultur i motsetning til dansk dominans. Forfattere, kunstnere og musikere bidro til å utvikle en nasjonal kultur som ble viktig for den politiske bevegelsen mot uavhengighet (Wikipedia).",
         link: "https://no.wikipedia.org/wiki/Norsk_kultur"
       },
       event25: {
         title: "Politiske spenninger",
-        description: "Misnøye med dansk styre la grunnlaget for nasjonal frigjøring.",
+        description: "Misnøye med dansk styre på 1800-tallet førte til politiske spenninger i Norge, som på sikt skulle bidra til den norske nasjonalismens fremvekst. Ønsket om politisk og kulturell uavhengighet ble en sentral drivkraft i utviklingen av en nasjonal bevegelse som skulle føre til Norges frigjøring fra Danmark ",
         link: "https://no.wikipedia.org/wiki/Frigjøring"
       },
       event26: {
         title: "Grunnloven på Eidsvoll (1814)",
-        description: "Grunnloven markerer starten på Norges kamp for selvstendighet og demokratiets fødsel.",
-        link: "https://no.wikipedia.org/wiki/Grunnloven_(1814)"
+        description: "Grunnloven av 1814, som ble vedtatt på Eidsvoll, markerer et av de viktigste øyeblikkene i Norges historie. Grunnloven ble utformet for å etablere Norge som en selvstendig nasjon, etter å ha vært en del av den dansk-norske unionen. Selv om Norge ble tvunget inn i en union med Sverige etter 1814, ble Grunnloven en viktig symbol på nasjonal selvstendighet og demokratiske verdier. Den la grunnlaget for et konstitusjonelt monarki og ga viktige rettigheter til innbyggerne. Grunnloven ble senere revidert flere ganger, men har fortsatt en sentral plass i Norges politiske liv.",
+        link: "https://snl.no/1814_-_Det_selvstendige_Norges_f%C3%B8dsel"
       },
       event27: {
         title: "Union med Sverige (1814–1905)",
-        description: "Norge var i union med Sverige, preget av nasjonal oppvåkning og kamp for selvstendighet.",
+        description: "Fra 1814 til 1905 var Norge i union med Sverige, en periode preget av nasjonal oppvåkning og kampen for mer selvstendighet. Unionen ble en kilde til politisk og kulturell spenning, og det var spesielt gjennom 1800-tallet at kravene om full selvstendighet vokste frem. Denne kampen kulminerte i oppløsningen av unionen i 1905, noe som markerte en viktig milepæl for norsk nasjonsbygging ",
         link: "https://no.wikipedia.org/wiki/Unionsoppløsningen"
       },
       event28: {
         title: "Unionsoppløsningen (1905)",
-        description: "Oppløsningen av unionen med Sverige ga Norge full uavhengighet.",
+        description: "Unionsoppløsningen i 1905 førte til at Norge ble en selvstendig nasjon etter flere år med politisk strid med Sverige. Dette ble et resultat av økende nasjonale krav og misnøye med den politiske situasjonen under unionen. Oppløsningen ble gjennomført på en fredelig måte, og Norge fikk full uavhengighet, noe som ble sett på som en stor seier for nasjonens identitet og selvbestemmelse",
         link: "https://no.wikipedia.org/wiki/Unionsoppløsningen"
       },
       event29: {
         title: "Språkstriden – Riksmål vs. Landsmål",
-        description: "Debatten om hvilket skriftspråk som skulle representere Norge var essensiell for nasjonal identitet.",
+        description: "Språkstriden i Norge på 1800- og tidlig 1900-tall dreide seg om hvilket skriftspråk som best skulle representere det norske folk. Debatten mellom riksmål og landsmål ble en viktig del av nasjonsbyggingen, da begge språkformene var knyttet til ulike syn på norsk kultur og identitet. Konflikten reflekterte de større ideologiske kampene om nasjonal enhet og modernisering i Norge",
         link: "https://no.wikipedia.org/wiki/Norsk_skriftspr%C3%A5k"
       },
       event30: {
         title: "Modernisering og industrialisering",
-        description: "Urbanisering, nye næringer og teknologiske fremskritt la grunnlaget for det moderne Norge.",
+        description: "På slutten av 1800-tallet og tidlig på 1900-tallet opplevde Norge en omfattende modernisering og industrialisering, som førte til betydelige endringer i samfunnet. Urbanisering, nye næringer som skipsfart og industri, samt teknologiske fremskritt bidro til å legge grunnlaget for det moderne Norge. Denne transformasjonen førte til et økonomisk oppsving og endret livsstilen til mange nordmenn ",
         link: "https://no.wikipedia.org/wiki/Industrialisering"
       },
       event31: {
         title: "Kvinners stemmerett (1913)",
-        description: "Innføringen av stemmerett for kvinner var et viktig steg mot likestilling.",
+        description: "Den norske kvinnebevegelsen vokste frem på slutten av 1800-tallet og tidlig på 1900-tallet, og ble en viktig del av kampen for kvinners rettigheter, inkludert stemmerett og likestilling. Kvinners rett til å stemme ble innført i Norge i 1913, og Norge var det første landet i verden som ga kvinner full stemmerett på lik linje med menn. Den norske kvinnebevegelsen fokuserte også på andre sosiale reformer, som retten til utdanning, arbeid og økonomisk uavhengighet. Den politiske og sosiale kampen for kvinners rettigheter fortsatte gjennom det 20. århundre og har hatt stor betydning for samfunnsutviklingen i Norge.",
         link: "https://no.wikipedia.org/wiki/Kvinners_stemmerett"
       },
       event32: {
         title: "Motstand under andre verdenskrig (1940–1945)",
-        description: "Den norske motstandsbevegelsen spilte en avgjørende rolle under okkupasjonen.",
+        description: "Motstandskampen under andre verdenskrig var avgjørende for Norge, da den norske motstandsbevegelsen gjennom sabotasjeaksjoner, etterretning og samarbeid med de allierte bidro til å svekke den tyske okkupasjonen fra 1940 til 1945. Bevegelsen bestod av flere grupper, blant annet Milorg, som spilte en viktig rolle i kampen mot Nazi-Tyskland, og ble et symbol på motstand og håp for det norske folk. Deres innsats har blitt husket som en sentral del av Norges kamp for frihet under krigen",
         link: "https://no.wikipedia.org/wiki/Andre_verds_krig"
       },
       event33: {
         title: "Bygging av velferdsstaten",
-        description: "Etter krigen ble det lagt grunnlaget for en moderne, sosialdemokratisk velferdsstat.",
+        description: "Etter andre verdenskrig ble det i Norge lagt grunnlaget for en moderne, sosialdemokratisk velferdsstat. I 1966 ble loven om folketrygd vedtatt, som inkluderte pensjoner, attføringsytelser, syketrygd, arbeidsløshetstrygd og yrkesskadetrygd. I tillegg ble loven om sosial omsorg innført i 1964 for å skape et sikkerhetsnett for dem som falt utenfor trygdesystemet. Disse reformene markerte starten på en omfattende utbygging av velferdsordninger i Norge. ",
         link: "https://no.wikipedia.org/wiki/Velferdsstat"
       },
       event34: {
         title: "Modernisering av monarkiet",
-        description: "Kong Harald Vs og Dronning Sonja moderniserte monarkiet, blant annet gjennom bryllupet i 1968.",
+        description: "Kong Harald V og Dronning Sonja har vært sentrale i moderniseringen av det norske monarkiet. Deres ekteskap i 1968, til tross for motstand fra deler av offentligheten, markerte et skifte mot et mer moderne og folkelig kongehus. Dronning Sonja, med sin bakgrunn i kunst og kultur, har bidratt til å styrke monarkiets rolle i det norske samfunnet. Sammen har de arbeidet for å gjøre kongehuset mer tilgjengelig og relevant for folk flest. Deres innsats har bidratt til å bevare monarkiets relevans i en moderne tid. ",
         link: "https://no.wikipedia.org/wiki/Kongefamilien_i_Norge"
       },
       event35: {
         title: "Økonomisk transformasjon",
-        description: "Oljeoppdagelsen og oljeøkonomien endret Norges økonomi fundamentalt.",
+        description: "Oljeoppdagelsen i Norge skjedde i midten av 1900-tallet og ble en av landets viktigste økonomiske hendelser. Den første store oljefunnene ble gjort i Nordsjøen, og det var Ekofisk-feltet som markerte starten på det norske oljeeventyret. Etter denne oppdagelsen fulgte flere store funn, og oljeindustrien utviklet seg raskt til å bli en viktig driver for økonomien. I dag er olje og gass en sentral del av Norges inntektsgrunnlag, og mange arbeidsplasser er knyttet til sektoren. Oljeeventyret har formet både næringslivet og samfunnet på flere måter.",
         link: "https://no.wikipedia.org/wiki/Oljeindustri"
       },
       event36: {
         title: "Prinsesse Mette-Marit og Kronprins Haakons bryllup (2001)",
-        description: "Et moderne kongelig bryllup som moderniserte den kongelige familien.",
+        description: "Prinsesse Mette-Marit og kronprins Haakon Magnus' ekteskap i 2001 var et annet viktig øyeblikk i Norges kongelige historie. Mette-Marit, som kom fra en mer vanlig bakgrunn, ble valgt som Haakons ektefelle, og deres ekteskap var et symbol på demokrati og tilgjengelighet for den norske kongefamilien. Mette-Marit har vært en aktiv offentlig figur, og har vært involvert i flere viktige prosjekter som fokuserer på helse, miljø og utvikling, spesielt innen mental helse og sosial rettferdighet.",
         link: "https://no.wikipedia.org/wiki/Kongefamilien_i_Norge"
       },
       event37: {
@@ -553,18 +434,18 @@
       },
       event38: {
         title: "Koronapandemien (2020–2022)",
-        description: "Den globale pandemien påvirket helsevesen, økonomi og dagligliv.",
+        description: "Koronapandemien som begynte i 2020 hadde en global innvirkning og rystet Norge, som måtte tilpasse seg en rekke helse- og sikkerhetstiltak for å beskytte befolkningen. Som i mange andre land førte pandemien til store omveltninger i arbeidslivet, utdanning og helsevesen. Samfunnet ble tvinget til å tilpasse seg nye måter å leve på, som sosial distansering, hjemmeundervisning og digitalisering. Pandemien hadde også en sterk økonomisk påvirkning, spesielt for småbedrifter og de som arbeidet i turistindustrien. Krisen førte imidlertid også til økt fellesskapsfølelse og solidaritet i den norske befolkningen, og har hatt langvarige konsekvenser på hvordan vi ser på helse, teknologi og samfunnet.",
         link: "https://no.wikipedia.org/wiki/Koronaviruspandemien"
       },
       event39: {
         title: "Digitalisering og teknologisk innovasjon",
-        description: "Satsing på digital infrastruktur og ny teknologi preger Norge i det 21. århundre.",
+        description: "På 2000-tallet gjennomgikk Norge en omfattende digitalisering, både i offentlig og privat sektor. Offentlige etater implementerte nasjonale digitale løsninger for å effektivisere samhandling og forbedre tjenestetilbudet til innbyggerne. I privat sektor ble mediebransjen digitalisert, noe som førte til lavere distribusjonskostnader og større mangfold i innholdsskaping. Infrastruktur ble modernisert, for eksempel ved overgangen fra analoge til digitale telefonnett, som forbedret kommunikasjonen i hele landet. For å støtte disse endringene ble det investert i digital kompetanse i offentlig sektor. Digitaliseringen førte til en mer sammenkoblet og effektiv økonomi i Norge, der både offentlige etater og private virksomheter kunne tilby bedre tjenester og produkter.",
         link: "https://no.wikipedia.org/wiki/Digitalisering"
       },
       event40: {
         title: "Fokus på klima og bærekraft",
-        description: "Norge engasjerer seg i internasjonale klimaavtaler og utvikler fornybar energi for en grønnere fremtid.",
-        link: "https://no.wikipedia.org/wiki/Klimaendringer"
+        description: "Norge har satt fokus på klima og bærekraft gjennom engasjement i internasjonale klimaavtaler som Parisavtalen og et mål om å redusere utslippene med minst 55 % innen 2030. Landet har omstilt sin energiproduksjon til fornybare kilder som vannkraft, vind- og solenergi, samtidig som det satser på energieffektivisering og grønn innovasjon. Med ambisjonen om å bli et lavutslippssamfunn innen 2050, arbeider Norge aktivt for en bærekraftig fremtid gjennom samarbeid med internasjonale partnere og investering i fornybare teknologier.",
+        link: "https://no.wikipedia.org/wiki/Klimaendringer_i_Norge"
       }
     };
 
